@@ -44,7 +44,7 @@ DEBUG = env('DEBUG')
 
 #print(env('TEST'))
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
 # Application definition
 
@@ -99,12 +99,11 @@ WSGI_APPLICATION = 'stocks_products.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': env('DB_NAME'),
-        'HOST': env('DB_HOST'),
-        'PORT': env.int('DB_PORT'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-
+        'NAME': env('DB_NAME', default=""),
+        'HOST': env('DB_HOST', default=""),
+        'PORT': env.int('DB_PORT', default=""),
+        'USER': env('DB_USER', default=""),
+        'PASSWORD': env('DB_PASSWORD', default=""),
     }
 }
 
