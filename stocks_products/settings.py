@@ -42,6 +42,8 @@ SECRET_KEY = env('SECRET_KEY')
 # False if not in os.environ because of casting above
 DEBUG = env('DEBUG')
 
+#print(env('TEST'))
+
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 # Application definition
@@ -96,7 +98,7 @@ WSGI_APPLICATION = 'stocks_products.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': env('DB_NAME'),
         'HOST': env('DB_HOST'),
         'PORT': env.int('DB_PORT'),
