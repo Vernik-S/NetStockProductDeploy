@@ -102,8 +102,8 @@ DATABASES = {
         'NAME': env('DB_NAME', default="sqlite.sq3"),
         'HOST': env('DB_HOST', default=""),
         'PORT': env.int('DB_PORT', default=""),
-        'USER': env('DB_USER', default=""),
-        'PASSWORD': env('DB_PASSWORD', default=""),
+        'USER': env('POSTGRES_USER', default=""),
+        'PASSWORD': env('POSTGRES_PASSWORD', default=""),
     }
 }
 
