@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'stocks_products.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DB_NAME', default="sqlite.sq3"),
         'HOST': env('DB_HOST', default=""),
         'PORT': env.int('DB_PORT', default=""),
