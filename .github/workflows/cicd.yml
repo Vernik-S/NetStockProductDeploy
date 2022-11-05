@@ -26,7 +26,7 @@ jobs:
           POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
           POSTGRES_DB: ${{ env.POSTGRES_DB}}
         ports:
-          - ${{ env.DB_PORT }}:5432
+          - 5431:5432 #
         options: #проверка работоспособности сервиса postgres
           --health-cmd pg_isready 
           --health-interval 10s 
