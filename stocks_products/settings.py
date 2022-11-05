@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+import django_on_heroku
+
 import environ
 
 env = environ.Env(
@@ -154,3 +156,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         "django_filters.rest_framework.DjangoFilterBackend"
 #     ]
 # }
+
+django_on_heroku.settings(locals())
