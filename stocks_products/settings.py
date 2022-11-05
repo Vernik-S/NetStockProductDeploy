@@ -34,7 +34,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Raises Django's ImproperlyConfigured
 # exception if SECRET_KEY not in os.environ
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY', default="123")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -99,11 +99,13 @@ WSGI_APPLICATION = 'stocks_products.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('POSTGRES_DB', default="sqlite.sq3"),
-        'HOST': env('DB_HOST', default=""),
-        'PORT': env.int('DB_PORT', default=""),
-        'USER': env('POSTGRES_USER', default=""),
-        'PASSWORD': env('POSTGRES_PASSWORD', default=""),
+        #'ENGINE': 'django.db.backends.sqlite3',
+
+        'NAME': env('POSTGRES_DB', default="netology_cicd"),
+        'HOST': env('DB_HOST', default="127.0.0.1"),
+        'PORT': env.int('DB_PORT', default="5431"),
+        'USER': env('POSTGRES_USER', default="app"),
+        'PASSWORD': env('POSTGRES_PASSWORD', default="1234"),
     }
 }
 

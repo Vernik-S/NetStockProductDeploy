@@ -1,0 +1,55 @@
+
+
+version: '3.9'
+
+#networks:
+#  dev_network:
+
+volumes:
+  db_volume:
+
+services:
+
+  db:
+    image: postgres:14.3-alpine3.15
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: netology_cicd
+    #volumes:
+    #  - db_volume:/var/lib/postgresql/data
+
+    #networks:
+    #  dev_network:
+    #    aliases:
+    #      - db-main
+
+  app:
+    build:
+      context: .
+    environment:
+      PG_DSN: "postgresql://app:1234@db:5432/netology_flask"
+      CELERY_BROKER: "redis://redis:6379/1"
+      CELERY_BACKEND: "redis://redis:6379/2"
+      SMTP_SERVER: "smtp4dev"
+      SMTP_PORT: "25"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+
+    #networks:
+    #  dev_network:
+    #    aliases:
+    #      - flask_api
+    restart:
+      always
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    entrypoint: sh ./run.sh
+
+
