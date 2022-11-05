@@ -4,7 +4,6 @@ from django.contrib import admin
 from logistic.models import Product, Stock, StockProduct
 
 
-
 class StockProductInline(admin.TabularInline):
     model = StockProduct
     extra = 1
@@ -17,12 +16,13 @@ class ProductAdmin(admin.ModelAdmin):
     list_display_links = ["title", "stocks"]
     inlines = [StockProductInline]
 
+
 @admin.register(Stock)
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ["id", "address",]
+class StockAdmin(admin.ModelAdmin):
+    list_display = ["id", "address", ]
     inlines = [StockProductInline]
+
 
 @admin.register(StockProduct)
 class StockProductAdmin(admin.ModelAdmin):
     list_display = ["id", "stock", "product", "quantity", "price"]
-

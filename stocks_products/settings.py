@@ -14,8 +14,6 @@ from pathlib import Path
 
 import environ
 
-
-
 env = environ.Env(
     DEBUG=(bool, True)
 )
@@ -42,7 +40,7 @@ SECRET_KEY = env('SECRET_KEY', default="123")
 # False if not in os.environ because of casting above
 DEBUG = env('DEBUG')
 
-#print(env('TEST'))
+# print(env('TEST'))
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 
@@ -99,7 +97,7 @@ WSGI_APPLICATION = 'stocks_products.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        #'ENGINE': 'django.db.backends.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
 
         'NAME': env('POSTGRES_DB', default="netology_cicd"),
         'HOST': env('DB_HOST', default="127.0.0.1"),
